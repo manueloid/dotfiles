@@ -1,0 +1,13 @@
+[user]
+	email = manuel.odelli@gmail.com
+	name = manueloid
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[core]
+	editor = nvim
+[push]
+	autoSetupRemote = true
