@@ -32,7 +32,7 @@ require('colorizer').setup()
 vim.opt.clipboard:append("unnamedplus")
 
 -- Setting up solarized colorscheme
-vim.cmd("colorscheme horizon")
+vim.cmd("colorscheme tokyonight")
 -- Setting up the bufferline
 -- vim.opt.termguicolors = true
 require('bufferline').setup({})

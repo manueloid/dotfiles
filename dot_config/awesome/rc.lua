@@ -71,7 +71,8 @@ run_once({
 	"urxvtd",
 	"unclutter -root",
 	"pcloud",
-	"setxkbmap -option grp:caps_switch -layout us,gr",
+	"setxkbmap us",
+	"xrandr --output HDMI-1-4 --mode 3840x2160 --rate 120",
 	-- "compton --config ~/.config/compton/compton.sample.conf"
 }) -- comma-separated entries
 
