@@ -72,7 +72,7 @@ run_once({
 	"unclutter -root",
 	"pcloud",
 	"setxkbmap us",
-	"xrandr --output HDMI-1-4 --mode 3840x2160 --rate 120",
+	"xrandr --output HDMI-A-1 --mode 3840x2160 --rate 120",
 	-- "compton --config ~/.config/compton/compton.sample.conf"
 }) -- comma-separated entries
 
@@ -114,10 +114,10 @@ local browser                          = "google-chrome"
 awful.util.terminal                    = terminal
 awful.util.tagnames                    = { "Dev1", "Dev2", "1", "2", "3" }
 awful.layout.layouts                   = {
-	awful.layout.suit.tile.right,
-	lain.layout.termfair,
-	lain.layout.termfair.center,
 	lain.layout.centerwork,
+	lain.layout.termfair.center,
+	lain.layout.termfair,
+	awful.layout.suit.tile.right,
 	-- lain.layout.cascade,
 	--lain.layout.cascade.tile,
 	--lain.layout.centerwork,
