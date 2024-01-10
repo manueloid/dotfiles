@@ -1,0 +1,11 @@
+[papers]
+dir = /home/manuel/pCloudDrive/PhD/Documents/papers
+
+[settings]
+default-library = papers
+opentool = zathura
+
+[bibtex]
+default-read-bibfile = bibliography.bib
+default-save-bibfile = bibliography.bib
+auto-read = True
