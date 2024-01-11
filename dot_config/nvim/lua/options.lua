@@ -36,6 +36,9 @@ vim.cmd("colorscheme tokyonight")
 -- Setting up the bufferline
 -- vim.opt.termguicolors = true
 require('bufferline').setup({})
+require('obsidian').setup({})
+-- Setting the conceallevel to 2
+vim.opt.conceallevel = 2
 
 -- usign xdg-open to open files like pdfs and images
 local files = { "pdf", "png", "jpg", "jpeg", "gif" }

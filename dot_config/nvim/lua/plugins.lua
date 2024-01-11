@@ -34,17 +34,11 @@ require("lazy").setup({
 	'hrsh7th/nvim-cmp',  -- Autocompletion engine to handle all sources
 	'hrsh7th/cmp-buffer', -- Completion source for the current buffer
 	'hrsh7th/cmp-nvim-lsp', -- Completion source for the language server protocol
-	{
-		'tzachar/cmp-fuzzy-path',
-		dependencies = {
-			'hrsh7th/nvim-cmp',
-			'tzachar/fuzzy.nvim'
-		}
-	},
 
 	'hrsh7th/cmp-nvim-lsp-signature-help', -- Completion source for the language server protocol
 	'hrsh7th/cmp-nvim-lua',             -- Completion source for Neovim API
 	'hrsh7th/cmp-copilot',              -- Completion source for GitHub Copilot
+	'hrsh7th/cmp-path',                 -- Completion source for file paths
 	'onsails/lspkind.nvim',             -- Better looking symbols in the completion menu
 	'saadparwaiz1/cmp_luasnip',         -- Completion source for LuaSnip
 
@@ -135,6 +129,19 @@ require("lazy").setup({
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
+		},
+	},
+	-- Plugin to deal with obsidian
+	{
+		'epwalsh/obsidian.nvim',
+		version = "*",
+		lazy = true,
+		event = {
+			"BufReadPre " .. vim.fn.expand("~") .. "/Vault/*.md",
+			"BufNewFile " .. vim.fn.expand("~") .. "/Vault/*.md",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
 		},
 	},
 })
