@@ -22,9 +22,10 @@ cmp.setup({
 		["<CR>"] = cmp.mapping({
 			i = function(fallback)
 				if cmp.visible() and cmp.get_active_entry() then
-					cmp.confirm({
+					cmp.confirm(
+					{
 						behavior = cmp.ConfirmBehavior.Replace,
-						select = false,
+						select = true,
 					})
 				else
 					fallback()
@@ -54,7 +55,7 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 		-- Jump to next snippet
-		["rw"] = cmp.mapping(function(fallback)
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if ls.expand_or_jumpable() then
 				ls.expand_or_jump()
 			else
@@ -62,7 +63,7 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 		-- Jump to previous snippet
-		["wr"] = cmp.mapping(function(fallback)
+		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if ls.jumpable(-1) then
 				ls.jump(-1)
 			else
