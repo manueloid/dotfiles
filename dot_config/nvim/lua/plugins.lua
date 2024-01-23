@@ -31,9 +31,9 @@ require("lazy").setup({
 	'nvim-tree/nvim-tree.lua',        -- File explorer
 
 	-- Completion section
-	'hrsh7th/nvim-cmp',  -- Autocompletion engine to handle all sources
-	'hrsh7th/cmp-buffer', -- Completion source for the current buffer
-	'hrsh7th/cmp-nvim-lsp', -- Completion source for the language server protocol
+	'hrsh7th/nvim-cmp',                 -- Autocompletion engine to handle all sources
+	'hrsh7th/cmp-buffer',               -- Completion source for the current buffer
+	'hrsh7th/cmp-nvim-lsp',             -- Completion source for the language server protocol
 
 	'hrsh7th/cmp-nvim-lsp-signature-help', -- Completion source for the language server protocol
 	'hrsh7th/cmp-nvim-lua',             -- Completion source for Neovim API
@@ -143,5 +143,31 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
+	},
+	-- Auto pairs
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		opts = {},
+	},
+	-- Tab out to get out of parenthesis
+	{
+		'abecodes/tabout.nvim',
+		config = function()
+			require('tabout').setup {
+				tabkey = '<C-t>', -- key to trigger tabout, set to an empty string to disable
+				backwards_tabkey = '<C-s>', -- key to trigger backwards tabout, set to an empty string to disable
+				tabouts = {
+					{ open = "'", close = "'" },
+					{ open = '"', close = '"' },
+					{ open = '`', close = '`' },
+					{ open = '(', close = ')' },
+					{ open = '[', close = ']' },
+					{ open = '{', close = '}' },
+				},
+				ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+				exclude = {}, -- tabout will ignore these filetypes
+			}
+		end,
 	},
 })
