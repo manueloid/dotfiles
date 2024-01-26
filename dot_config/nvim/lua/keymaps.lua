@@ -27,8 +27,8 @@ map("n", "<M-e>", [[:lua require("luasnip.loaders").edit_snippet_files()<CR>]])
 map("n", "<C-b>", ":Commentary<CR>")
 
 -- Remapping <C-s> to save all the current buffers
-map("n", "<C-w>", ":wa<CR>")
-map("i", "<C-w>", "<C-o>:wa<CR>")
+map("n", "<C-s>", ":wa<CR>")
+map("i", "<C-s>", "<C-o>:wa<CR>")
 
 -- Remapping <C-q> to save and quit all the current buffers
 map("n", "<C-q>", ":wqa!<CR>")

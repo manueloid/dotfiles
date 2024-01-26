@@ -98,7 +98,7 @@ require("lazy").setup({
 	},
 	{
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.1',
+		-- tag = '0.1.1',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 		},
@@ -144,30 +144,23 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 		},
 	},
-	-- Auto pairs
+	-- autopair Plugin
 	{
 		'windwp/nvim-autopairs',
-		event = "InsertEnter",
-		opts = {},
+		config = function()
+			require('nvim-autopairs').setup()
+		end,
 	},
-	-- Tab out to get out of parenthesis
+	-- Plugin to tab out of parenthesis
 	{
 		'abecodes/tabout.nvim',
 		config = function()
 			require('tabout').setup {
-				tabkey = '<C-t>', -- key to trigger tabout, set to an empty string to disable
-				backwards_tabkey = '<C-s>', -- key to trigger backwards tabout, set to an empty string to disable
-				tabouts = {
-					{ open = "'", close = "'" },
-					{ open = '"', close = '"' },
-					{ open = '`', close = '`' },
-					{ open = '(', close = ')' },
-					{ open = '[', close = ']' },
-					{ open = '{', close = '}' },
-				},
-				ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
-				exclude = {}, -- tabout will ignore these filetypes
-			}
+				tabkey = '<C-e>',
+				backwards_tabkey = '<C-y>',
+				}
 		end,
+		wants = { 'nvim-treesitter' },
+		after = { 'nvim-cmp' }
 	},
 })
