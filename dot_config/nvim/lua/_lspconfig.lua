@@ -35,3 +35,26 @@ local servers_snip = { "html", "cssls" }
 for _, server in ipairs(servers_snip) do
 	require("lspconfig")[server].setup { on_attach = on_attach, capabilities = capabilities }
 end
+
+local nvim_lsp = require('lspconfig')
+local configs = require('lspconfig.configs')
+
+configs.lsp_wl = {
+  default_config = {
+    cmd = {
+      "wolfram",
+      "kernel",
+      "-noinit",
+      "-noprompt",
+      "-nopaclet",
+      "-noicon",
+      "-nostartuppaclets",
+      "-run",
+      'Needs["LSPServer`"];LSPServer`StartServer[]',
+    },
+    filetypes = { "mma", "wl" },
+    root_dir = nvim_lsp.util.path.dirname,
+  },
+}
+
+nvim_lsp.lsp_wl.setup({ on_attach = on_attach })

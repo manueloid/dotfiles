@@ -37,7 +37,6 @@ require("lazy").setup({
 
 	'hrsh7th/cmp-nvim-lsp-signature-help', -- Completion source for the language server protocol
 	'hrsh7th/cmp-nvim-lua',             -- Completion source for Neovim API
-	'hrsh7th/cmp-copilot',              -- Completion source for GitHub Copilot
 	'hrsh7th/cmp-path',                 -- Completion source for file paths
 	'onsails/lspkind.nvim',             -- Better looking symbols in the completion menu
 	'saadparwaiz1/cmp_luasnip',         -- Completion source for LuaSnip
@@ -67,9 +66,10 @@ require("lazy").setup({
 	'lervag/vimtex',
 	-- Julia Editor support plugin
 	'JuliaEditorSupport/julia-vim',
-
-	-- Copilot extension for neovim
-	'github/copilot.vim',
+	{
+		'Exafunction/codeium.vim',
+		event = 'BufEnter'
+	},
 
 	-- The tpope experience
 	'tpope/vim-commentary',
@@ -118,11 +118,18 @@ require("lazy").setup({
 	},
 	-- Colorscheme and extra color options
 	'shaunsingh/solarized.nvim', -- Solarized theme
-	'folke/tokyonight.nvim',     -- Tokyo night theme
-	'lunarvim/horizon.nvim',     -- Horizon theme
+	'folke/tokyonight.nvim',    -- Tokyo night theme
+	'lunarvim/horizon.nvim',    -- Horizon theme
 	'norcalli/nvim-colorizer.lua', -- Colorizer
 
-	'iamcco/markdown-preview.nvim', -- Markdown preview
+	'voldikss/vim-mma',
+
+	{
+		'iamcco/markdown-preview.nvim', -- Markdown preview
+		cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+		ft = { "markdown" },
+		build = function() vim.fn["mkdp#util#install"]() end,
+	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -143,24 +150,5 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-	},
-	-- autopair Plugin
-	{
-		'windwp/nvim-autopairs',
-		config = function()
-			require('nvim-autopairs').setup()
-		end,
-	},
-	-- Plugin to tab out of parenthesis
-	{
-		'abecodes/tabout.nvim',
-		config = function()
-			require('tabout').setup {
-				tabkey = '<C-e>',
-				backwards_tabkey = '<C-y>',
-				}
-		end,
-		wants = { 'nvim-treesitter' },
-		after = { 'nvim-cmp' }
 	},
 })

@@ -107,7 +107,7 @@ end
 local symbols = {}
 for index = 1, #latin do
     local latin_trig = totrigger(";", latin[index])
-    symbols[index] = s(latin_trig, t(greek_unicode[index]))
+    symbols[index] = s({trig = latin_trig, wordTrig = false}, t(greek_unicode[index]))
 end
 
 ls.add_snippets("julia", symbols, { type = "autosnippets" })
