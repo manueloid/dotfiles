@@ -36,7 +36,6 @@ vim.cmd("colorscheme tokyonight")
 -- Setting up the bufferline
 -- vim.opt.termguicolors = true
 require('bufferline').setup({})
-require('obsidian').setup({})
 -- Setting the conceallevel to 2
 vim.opt.conceallevel = 2
 

@@ -67,8 +67,21 @@ require("lazy").setup({
 	-- Julia Editor support plugin
 	'JuliaEditorSupport/julia-vim',
 	{
-		'Exafunction/codeium.vim',
-		event = 'BufEnter'
+		'JohnRigoni/codeium.vim',
+		event = 'BufEnter',
+		config = function()
+			vim.keymap.set('i', '<c-t>', function() return vim.fn['codeium#Accept']() end,
+				{ expr = true, silent = true })
+			vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](1) end,
+				{ expr = true, silent = true })
+			vim.keymap.set('i', '<c-.>', function() return vim.fn['codeium#CycleCompletions'](1) end,
+				{ expr = true, silent = true })
+			vim.keymap.set('i', '<c-g>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+			vim.keymap.set('i', '<c-h>', function() return vim.fn['codeium#AcceptWord']() end,
+				{ expr = true, silent = true })
+			vim.keymap.set('i', '<c-r>', function() return vim.fn['codeium#AcceptLine']() end,
+				{ expr = true, silent = true })
+		end
 	},
 
 	-- The tpope experience
@@ -136,19 +149,6 @@ require("lazy").setup({
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
-		},
-	},
-	-- Plugin to deal with obsidian
-	{
-		'epwalsh/obsidian.nvim',
-		version = "*",
-		lazy = true,
-		event = {
-			"BufReadPre " .. vim.fn.expand("~") .. "/Vault/*.md",
-			"BufNewFile " .. vim.fn.expand("~") .. "/Vault/*.md",
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
 		},
 	},
 })
