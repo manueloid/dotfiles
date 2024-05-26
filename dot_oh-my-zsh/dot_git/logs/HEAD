@@ -69,3 +69,12 @@ f7b647e1b13ed9cd2f34f3559c112e61b8c03108 212437090032ea1c8c7ccbc1bc2937083c2e718
 15ffbdd346daa58de6701d3421787012420aa6cc 15ffbdd346daa58de6701d3421787012420aa6cc manueloid <manuel.odelli@gmail.com> 1711622927 +0000	checkout: moving from master to master
 15ffbdd346daa58de6701d3421787012420aa6cc 1d09c6bb0a950756a65b02457842933e3aa493eb manueloid <manuel.odelli@gmail.com> 1711622928 +0000	pull --quiet --rebase origin master: Fast-forward
 1d09c6bb0a950756a65b02457842933e3aa493eb 1d09c6bb0a950756a65b02457842933e3aa493eb manueloid <manuel.odelli@gmail.com> 1711622928 +0000	checkout: moving from master to master
+1d09c6bb0a950756a65b02457842933e3aa493eb 1d09c6bb0a950756a65b02457842933e3aa493eb manueloid <manuel.odelli@gmail.com> 1712730389 +0100	checkout: moving from master to master
+1d09c6bb0a950756a65b02457842933e3aa493eb 605d76616aa47b2e5abe25eb26c4c9c1554f93d5 manueloid <manuel.odelli@gmail.com> 1712730390 +0100	pull --quiet --rebase origin master: Fast-forward
+605d76616aa47b2e5abe25eb26c4c9c1554f93d5 605d76616aa47b2e5abe25eb26c4c9c1554f93d5 manueloid <manuel.odelli@gmail.com> 1712730390 +0100	checkout: moving from master to master
+605d76616aa47b2e5abe25eb26c4c9c1554f93d5 605d76616aa47b2e5abe25eb26c4c9c1554f93d5 manueloid <manuel.odelli@gmail.com> 1713862822 +0100	checkout: moving from master to master
+605d76616aa47b2e5abe25eb26c4c9c1554f93d5 ee69c14beb24c652707b2f6b2a9db0fa8b238d05 manueloid <manuel.odelli@gmail.com> 1713862823 +0100	pull --quiet --rebase origin master: Fast-forward
+ee69c14beb24c652707b2f6b2a9db0fa8b238d05 ee69c14beb24c652707b2f6b2a9db0fa8b238d05 manueloid <manuel.odelli@gmail.com> 1713862823 +0100	checkout: moving from master to master
+ee69c14beb24c652707b2f6b2a9db0fa8b238d05 ee69c14beb24c652707b2f6b2a9db0fa8b238d05 manueloid <manuel.odelli@gmail.com> 1716285285 +0100	checkout: moving from master to master
+ee69c14beb24c652707b2f6b2a9db0fa8b238d05 a779d6563ffb2f0093b4b74c8d5ff0982fa3e930 manueloid <manuel.odelli@gmail.com> 1716285287 +0100	pull --quiet --rebase origin master: Fast-forward
+a779d6563ffb2f0093b4b74c8d5ff0982fa3e930 a779d6563ffb2f0093b4b74c8d5ff0982fa3e930 manueloid <manuel.odelli@gmail.com> 1716285287 +0100	checkout: moving from master to master

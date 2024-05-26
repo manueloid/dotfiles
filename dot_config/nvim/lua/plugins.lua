@@ -134,15 +134,16 @@ require("lazy").setup({
 	'folke/tokyonight.nvim',    -- Tokyo night theme
 	'lunarvim/horizon.nvim',    -- Horizon theme
 	'norcalli/nvim-colorizer.lua', -- Colorizer
-
-	'voldikss/vim-mma',
-
 	{
-		'iamcco/markdown-preview.nvim', -- Markdown preview
-		cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
 		ft = { "markdown" },
-		build = function() vim.fn["mkdp#util#install"]() end,
 	},
+	'voldikss/vim-mma',
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
