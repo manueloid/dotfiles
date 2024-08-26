@@ -4,9 +4,9 @@ require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
 
 -- Snippet engine setup
 ls.config.set_config({
-	history = true,                           -- Remembers the last position of the cursor in a node
+	history = true,                       -- Remembers the last position of the cursor in a node
 	update_events = "TextChanged, TextChangedI", -- Updates the content of a node every time text is changed
-	enable_autosnippets = true,               -- Allow snippets to automatically expand
+	enable_autosnippets = true,           -- Allow snippets to automatically expand
 })
 
 
@@ -14,26 +14,20 @@ ls.config.set_config({
 local cmp = require("cmp")
 local lspkind = require("lspkind") -- Plugin to have better symbols in the completion menu
 cmp.setup({
-	snippet = {
-		function(args) ls.lsp_expand(args.body) end,
-	},
 	mapping = {
 		-- Confirm selection
-		["<CR>"] = cmp.mapping({
-			i = function(fallback)
-				if cmp.visible() and cmp.get_active_entry() then
-					cmp.confirm(
-					{
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
-					})
+		["<CR>"] = cmp.mapping(
+			function(fallback)
+				if cmp.visible() then
+					if ls.expandable() then
+						ls.expand()
+					else
+						cmp.confirm({ select = true })
+					end
 				else
 					fallback()
 				end
-			end,
-			s = cmp.mapping.confirm({ select = true }),
-			c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-		}),
+			end),
 		-- Open the completion menu
 		["<C-n>"] = cmp.mapping.complete(),
 		-- Close the completion menu
@@ -77,11 +71,13 @@ cmp.setup({
 		{ name = 'path' },
 		{ name = 'nvim_lsp_signature_help' },
 		{ name = 'luasnip' },
+		{ name = 'codeium' },
 	}),
 	formatting = {
 		fields = { "kind", "abbr" },
 		format = function(entry, vim_item)
-			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry,
+				vim_item)
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
 			kind.kind = " " .. (strings[1] or "") .. " "
 			kind.menu = "    (" .. (strings[2] or "") .. ")"

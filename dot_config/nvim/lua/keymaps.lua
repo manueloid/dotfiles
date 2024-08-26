@@ -24,7 +24,9 @@ map('i', "<C-p>", "<C-o>p")
 map("n", "<M-e>", [[:lua require("luasnip.loaders").edit_snippet_files()<CR>]])
 
 -- Remapping gc to comment the current line
-map("n", "<C-b>", ":Commentary<CR>")
+local api = require('Comment.api')
+vim.keymap.set('n', '<C-B>', api.toggle.blockwise.current)
+vim.keymap.set('n', '<C-G>', api.toggle.linewise.current)
 
 -- Remapping <C-s> to save all the current buffers
 map("n", "<C-s>", ":wa<CR>")
@@ -35,11 +37,10 @@ map("n", "<C-q>", ":wqa!<CR>")
 map("i", "<C-q>", "<C-o>:wqa!<CR>")
 -- Remapping both <space> and <CR> to work in normal mode
 vim.api.nvim_set_keymap("n", "<space>", ":", { noremap = false })
-vim.api.nvim_set_keymap("n", "<CR>", ":w<CR>", { noremap = false, silent = true })
 -- Remapping the movement keys
 map("n", "k", "f")
 map("n", "l", "r")
-local keys = { 's', 'h', 't', 'r' , 'S', 'H', 'T', 'R'}
+local keys = { 's', 'h', 't', 'r', 'S', 'H', 'T', 'R' }
 local movement = { '<Left>', '<Down>', '<Right>', '<Up>', '<C-Left>', '<C-Down>', '<C-Right>', '<C-Up>' }
 for i = 1, #keys do
 	map("n", keys[i], movement[i])
@@ -55,3 +56,4 @@ vim.keymap.set('n', 'f', function()
 end)
 
 vim.keymap.set('n', '<C-h>', require('smart-splits').resize_left)
+

@@ -1,3 +1,10 @@
+### Added by Codeium. These lines cannot be automatically removed if modified
+if command -v termium > /dev/null 2>&1; then
+  eval "$(termium shell-hook show pre)"
+fi
+### End of Codeium integration
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -85,8 +92,10 @@ bindkey -M vicmd "j" history-beginning-search-forward
 bindkey -M vicmd "k" history-beginning-search-backward
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-export OPENAI_API_KEY=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
+export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/rocm-6.1.2/bin"
 export EDITOR=nvim
+export LIBRARY_PATH=$LIBRARY_PATH:/opt/rocm/lib
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -113,6 +122,18 @@ export EDITOR=nvim
 source $ZSH/custom/my_aliases.zsh
 export NVM_DIR="$HOME/.nvm"
 export JULIA_NUM_THREADS=8
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+# export PATH="$HOME/.cargo/bin:$PATH"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 eval "$(zoxide init zsh)"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/manueloid/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

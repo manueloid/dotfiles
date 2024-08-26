@@ -10,6 +10,7 @@ local on_attach = function(client, bufnr)
 	vim.diagnostic.config({ signs = false })
 end
 
+local lspconfig = require("lspconfig")
 require("lspconfig").lua_ls.setup { -- Setup and configuration for the lua LSP
 	settings = {
 		Lua = {
@@ -27,10 +28,11 @@ require("lspconfig").lua_ls.setup { -- Setup and configuration for the lua LSP
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = { "julials", "marksman", "pyright", "texlab", "csharp_ls", "clangd"}
+local servers = { "julials", "marksman", "pyright", "texlab", "csharp_ls", "clangd" }
 for _, server in ipairs(servers) do
-	require("lspconfig")[server].setup { on_attach = on_attach }
+	require("lspconfig")[server].setup { on_attach = on_attach, symbol_cache_download = "false" }
 end
+lspconfig.clangd.setup { on_attach = on_attach, capabilities = capabilities, filetypes = {"hip"}}
 local servers_snip = { "html", "cssls" }
 for _, server in ipairs(servers_snip) do
 	require("lspconfig")[server].setup { on_attach = on_attach, capabilities = capabilities }
@@ -40,21 +42,20 @@ local nvim_lsp = require('lspconfig')
 local configs = require('lspconfig.configs')
 
 configs.lsp_wl = {
-  default_config = {
-    cmd = {
-      "wolfram",
-      "kernel",
-      "-noinit",
-      "-noprompt",
-      "-nopaclet",
-      "-noicon",
-      "-nostartuppaclets",
-      "-run",
-      'Needs["LSPServer`"];LSPServer`StartServer[]',
-    },
-    filetypes = { "mma", "wl" },
-    root_dir = nvim_lsp.util.path.dirname,
-  },
+	default_config = {
+		cmd = {
+			"WolframKernel",
+			"-noinit",
+			"-noprompt",
+			"-nopaclet",
+			"-noicon",
+			"-nostartuppaclets",
+			"-run",
+			'Needs["LSPServer`"];LSPServer`StartServer[]',
+		},
+		filetypes = { "wolfram", "wl" },
+		root_dir = nvim_lsp.util.path.dirname,
+	},
 }
 
-nvim_lsp.lsp_wl.setup({ on_attach = on_attach })
+lspconfig.lsp_wl.setup({ on_attach = on_attach })

@@ -9,6 +9,7 @@ local conds_expand = require("luasnip.extras.conditions.expand")
 local fmta         = require("luasnip.extras.fmt").fmta
 
 local inline       = s("mm", fmta("$ <> $ ", i(1, "inline math")))
+local usepackage 	   = s("pk", fmta("\\usepackage{<>} ", i(1, "package")))
 local env          = s(
 	{
 		trig = "en",
@@ -32,4 +33,4 @@ local env          = s(
 		}
 	)
 )
-ls.add_snippets("tex", { inline, env }, { type = "autosnippets" })
+ls.add_snippets("tex", { inline, env, usepackage }, { type = "autosnippets" })

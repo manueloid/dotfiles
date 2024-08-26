@@ -8,5 +8,4 @@
 -- vim.opt.conceallevel = 2
 vim.g.vimtex_quickfix_mode = 0
 vim.g.vimtex_quickfix_autoclose_after_keystrokes = 4
---	Adding automatic folding
 vim.g.vimtex_fold_enabled = 1

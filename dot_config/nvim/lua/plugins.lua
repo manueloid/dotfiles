@@ -46,7 +46,7 @@ require("lazy").setup({
 	'akinsho/bufferline.nvim', -- Bufferline
 
 	-- ToggleTerm plugin to handle terminal windows
-	'akinsho/toggleterm.nvim',
+	-- 'akinsho/toggleterm.nvim',
 	-- Smart splits
 	{
 		'mrjones2014/smart-splits.nvim',
@@ -63,7 +63,15 @@ require("lazy").setup({
 	'jpalardy/vim-slime',
 
 	-- VimTex and all LaTeX related plugins
-	'lervag/vimtex',
+	{
+		'lervag/vimtex',
+		init = function()
+			vim.g.vimtex_view_method = 'zathura'
+			vim.g.vimtex_quickfix_mode = 0
+			vim.g.vimtex_quickfix_autoclose_after_keystrokes = 1
+			vim.g.vimtex_fold_enabled = 1
+		end
+	},
 	-- Julia Editor support plugin
 	'JuliaEditorSupport/julia-vim',
 	{
@@ -76,26 +84,46 @@ require("lazy").setup({
 				{ expr = true, silent = true })
 			vim.keymap.set('i', '<c-.>', function() return vim.fn['codeium#CycleCompletions'](1) end,
 				{ expr = true, silent = true })
-			vim.keymap.set('i', '<c-g>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+			--[[ vim.keymap.set('i', '<c-g>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true }) ]]
 			vim.keymap.set('i', '<c-h>', function() return vim.fn['codeium#AcceptWord']() end,
 				{ expr = true, silent = true })
-			vim.keymap.set('i', '<c-r>', function() return vim.fn['codeium#AcceptLine']() end,
+			vim.keymap.set('i', '<c-r>', function() return vim.fn['codeium#acceptline']() end,
 				{ expr = true, silent = true })
+			vim.g.codeium_disable_bindings = 1
 		end
 	},
 
-	-- The tpope experience
-	'tpope/vim-commentary',
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = function()
+			require("nvim-autopairs").setup {}
+		end
+	},
+
+	{
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end,
+	},
+	-- the tpope experience
 	'tpope/vim-fugitive',
 	'tpope/vim-repeat',
-	'tpope/vim-surround',
 
-	-- Movement Section
+	-- movement section
 	{
 		"ggandor/leap.nvim",
 		config = function()
 			require("leap").add_default_mappings()
 		end,
+	},
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup()
+		end
 	},
 	{
 		'ethanholz/nvim-lastplace',
@@ -104,7 +132,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Telescope
+	-- telescope
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make'
@@ -122,28 +150,11 @@ require("lazy").setup({
 		'stevearc/oil.nvim',
 		config = function() require('oil').setup() end,
 	},
-	-- Greeting page with alpha.nvim
-	{
-		'goolord/alpha-nvim',
-		config = function()
-			require('alpha').setup(require('alpha.themes.startify').config)
-		end,
-	},
 	-- Colorscheme and extra color options
 	'shaunsingh/solarized.nvim', -- Solarized theme
 	'folke/tokyonight.nvim',    -- Tokyo night theme
 	'lunarvim/horizon.nvim',    -- Horizon theme
 	'norcalli/nvim-colorizer.lua', -- Colorizer
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && yarn install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	},
-	'voldikss/vim-mma',
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -151,5 +162,15 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		},
+	},
+	{
+		"abecodes/tabout.nvim",
+		lazy = false,
+		config = function()
+			require("tabout").setup {
+				tabkey = "<M-t>",
+				backwards_tabkey = "<M-s>",
+			}
+		end
 	},
 })

@@ -1,7 +1,0 @@
-alias n='nvim'
-alias gac='git add --all && git commit'
-alias gro='cd $(git rev-parse --show-toplevel)'
-alias dnc='dotnet new console && rm Program.cs'
-alias gce='gh copilot explain "$@"'
-alias gcs='gh copilot suggest "$@"'
-alias corr='g++ $@ && ./a.out'

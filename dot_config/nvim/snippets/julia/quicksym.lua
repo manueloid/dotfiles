@@ -24,7 +24,7 @@ local section      = s("ss",
 	}
 )
 
-local doc_func     = s(
+local doc_func    = s(
 	{
 		trig = "df",
 		condition = conds_expand.line_begin,
